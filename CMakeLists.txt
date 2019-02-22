@@ -17,6 +17,7 @@ add_library( add
              src/add/add.cpp
              include/add/add.h   # Is this necessary?
             )
+set_property(TARGET add PROPERTY CXX_STANDARD 17)
 
 # Create an ALIAS for this library. All other
 # libraries that list this as a dependency should
@@ -27,15 +28,14 @@ target_include_directories( add
                             PUBLIC
                                include/add)
 
-# When `cmake --build . --target install` is called, install:
-#  *.so/*.a     -> $CMAKE_INSTALL_PREFIX/lib
-#  executables  -> $CMAKE_INSTALL_PREFIX/bin
-#  *.h          -> $CMAKE_INSTALL_PREFIX/include   (NOT WORKING)
+set_target_properties(add PROPERTIES PUBLIC_HEADER "include/add/add.h;include/add/another_header.h")
+
 install( TARGETS  add EXPORT addTargets
          LIBRARY  DESTINATION lib
          ARCHIVE  DESTINATION lib
          RUNTIME  DESTINATION bin
-         INCLUDES DESTINATION include
+         PUBLIC_HEADER
+                 DESTINATION include
          )
 ###################################################
 
