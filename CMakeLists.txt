@@ -15,7 +15,7 @@ cmake_minimum_required(VERSION 3.8.0 FATAL_ERROR)
 
 project(testproject)
 
-add_subdirectory(src/add)
-add_subdirectory(src/mult)
-add_subdirectory(src/subtract)
-add_subdirectory(src/stupid-calculator)
+add_subdirectory(lib/add)
+add_subdirectory(lib/mult)
+add_subdirectory(lib/subtract)
+add_subdirectory(bin/stupid-calculator)
